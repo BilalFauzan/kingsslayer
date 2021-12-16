@@ -107,15 +107,20 @@ col1.subheader("Produksi Minyak Mentah Per Negara")
 
 #membuat list baru jumlah produksi tiap tahun dari negara tersebut
 jumlah_prod=[]
+tahun_max=2015
+tahun_a=[]
 for i in df[df['nama_negara']==negara]['produksi'] :
     jumlah_prod.append(i)
+    tahun_a.append(tahun_max)
+    tahun_max-=1
+tahun_a.sort()
 
 #membuat plot
 fig, ax = plt.subplots()
 cmap_name = 'tab20'
 cmap = cm.get_cmap(cmap_name)
 colors = cmap.colors[:len(tahun_unik)]
-ax.bar(tahun_unik, jumlah_prod, color=colors)
+ax.bar(tahun_a, jumlah_prod, color=colors)
 ax.set_title(f"Produksi Minyak Mentah {negara}")
 ax.set_xlabel("Tahun", fontsize=12)
 ax.set_ylabel("Total Produksi", fontsize=12)
@@ -127,7 +132,7 @@ col1.pyplot(fig)
 #menampilkan data dari plot
 col2.subheader("Data")
 df_view1 = pd.DataFrame(
-    {'Tahun': tahun_unik,
+    {'Tahun': tahun_a,
      'Produksi': jumlah_prod
      })
 col2.dataframe(df_view1, 300, 475)
