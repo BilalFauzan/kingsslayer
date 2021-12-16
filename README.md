@@ -11,7 +11,7 @@ conda install -c conda-forge streamlit
 ```
 ### Run
 ```
-streamlit run https://raw.githubusercontent.com/nurahmadi/streamlit_demo/main/minyak.py
+https://raw.githubusercontent.com/BilalFauzan/kingsslayer/main/minyak.py
 ```
 ## Required packages
 - Streamlit
