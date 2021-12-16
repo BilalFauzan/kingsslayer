@@ -380,8 +380,16 @@ df_baru=pd.DataFrame(index =tahun_unik)
 penampung_data=[]
 for i in per_negara:
     prod_per_negara = []
+    indikator=0
     for x in df[df['nama_negara']==i]['produksi'] :
         prod_per_negara.append(x)
-    df_baru[i]=prod_per_negara
+        indikator+=1
+    if indikator != 45:
+        jarak= 45-indikator
+        for k in range(jarak):
+            prod_per_negara.insert(0,0)
+        df_baru[i]=prod_per_negara
+    else :
+        df_baru[i]=prod_per_negara
 
 st.line_chart(data=df_baru)
